@@ -1,0 +1,8 @@
+# GPUS: (0,)
+
+DATASET:
+  DATASET: 'fer-2013'
+  ROOT: '../DATASET/fer2013-v1/'
+  NUM_CLASSES: 7
+TEST:
+  METRIC: 'accuracy'

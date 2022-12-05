@@ -1,0 +1,7 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'oxford-flower-102'
+  ROOT: '../DATASET/flower102/'
+  NUM_CLASSES: 102
+TEST:
+  METRIC: 'mean-per-class'

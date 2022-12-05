@@ -1,0 +1,11 @@
+# GPUS: (0,)
+DATA_DIR: ''
+
+DATASET:
+  DATASET: 'food-101'
+  ROOT: '../DATASET/food101/'
+  NUM_CLASSES: 101
+TEST:
+  METRIC: 'accuracy'
+DEBUG:
+  DEBUG: false

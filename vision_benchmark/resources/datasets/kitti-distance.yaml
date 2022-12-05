@@ -1,0 +1,8 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'kitti-distance'
+  CENTER_CROP: false
+  ROOT: '../DATASET/kitti_distance_20210923/'
+  NUM_CLASSES: 4
+TEST:
+  METRIC: 'accuracy'

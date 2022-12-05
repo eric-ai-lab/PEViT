@@ -1,0 +1,8 @@
+# GPUS: (0,)
+
+DATASET:
+  DATASET: 'patch-camelyon'
+  ROOT: '../DATASET/patchcamelyon/'
+  NUM_CLASSES: 2
+TEST:
+  METRIC: 'accuracy'

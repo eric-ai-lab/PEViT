@@ -1,0 +1,7 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'oxford-iiit-pets'
+  ROOT: '../DATASET/pet37/'
+  NUM_CLASSES: 37
+TEST:
+  METRIC: 'mean-per-class'

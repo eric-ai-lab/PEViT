@@ -1,0 +1,8 @@
+# GPUS: (0,)
+
+DATASET:
+  DATASET: 'cifar-10'
+  ROOT: '../../DATASET/cifar10/'
+  NUM_CLASSES: 10
+TEST:
+  METRIC: 'accuracy'

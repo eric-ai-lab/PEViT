@@ -1,0 +1,20 @@
+INPUT:
+  MEAN:
+  - 0.485
+  - 0.456
+  - 0.406
+  STD:
+  - 0.229
+  - 0.224
+  - 0.225
+MODEL:
+  NAME: clip_example
+  NUM_PARAMS_IN_M: 11.0
+  AUTHOR: 'MSFT'
+  PRETRAINED_DATA: 'ImageNet22K'
+  CREATION_TIME: '2019-05-27'
+  # Following configuration is needed for CLIP model.
+  SPEC:
+    TEXT:
+      TOKENIZER: clip
+      STYLE: clip

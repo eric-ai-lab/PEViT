@@ -1,0 +1,7 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'eurosat_clip'
+  ROOT: '../DATASET/eurosat_clip/'
+  NUM_CLASSES: 10
+TEST:
+  METRIC: 'accuracy'

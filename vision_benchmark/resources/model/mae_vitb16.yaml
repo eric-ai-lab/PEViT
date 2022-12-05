@@ -1,0 +1,35 @@
+# GPUS: (0,)
+OUTPUT_DIR: '../../OUTPUT/MAE_VIT_BASE_16/'
+
+MODEL:
+  NAME: mae_vitb16
+  NUM_PARAMS_IN_M: 86.6
+  AUTHOR: 'Facebook'
+  PRETRAINED_DATA: 'ImageNet22K'
+  CREATION_TIME: '2020-10-13'
+  SPEC:
+    EMBED_DIM: 768
+    PATCH_SIZE: 16
+    DEPTH: 12
+    NUM_HEADS: 12
+    MLP_RATIO: 4
+    QKV_BIAS: True
+    GLOBAL_POOL: True
+
+TEST:
+  BATCH_SIZE_PER_GPU: 128
+  MODEL_FILE: 'https://dl.fbaipublicfiles.com/mae/pretrain/mae_pretrain_vit_base.pth'
+
+TRAIN:
+  BATCH_SIZE_PER_GPU: 64
+  BEGIN_EPOCH: 0
+  END_EPOCH: 10
+  EXTRA_FINAL_TRAIN_EPOCH: 40
+  OPTIMIZER: sgd
+  WD: 0.
+  MOMENTUM: 0.9
+  NESTEROV: false
+  SHUFFLE: true
+  LR_SCHEDULER:
+    METHOD: 'WarmupCosine'
+    WARMUP_EPOCH: 5

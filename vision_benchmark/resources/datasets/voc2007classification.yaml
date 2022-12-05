@@ -1,0 +1,7 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'voc-2007-classification'
+  ROOT: '../DATASET/voc2007/'
+  NUM_CLASSES: 20
+TEST:
+  METRIC: '11point_mAP'

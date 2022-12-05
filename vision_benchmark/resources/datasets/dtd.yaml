@@ -1,0 +1,8 @@
+# GPUS: (0,)
+
+DATASET:
+  DATASET: 'dtd'
+  ROOT: '../DATASET/dtd-v1/'
+  NUM_CLASSES: 47
+TEST:
+  METRIC: 'accuracy'

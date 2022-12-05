@@ -1,0 +1,7 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'rendered-sst2'
+  ROOT: '../DATASET/rendered-sst2/'
+  NUM_CLASSES: 2
+TEST:
+  METRIC: 'accuracy'

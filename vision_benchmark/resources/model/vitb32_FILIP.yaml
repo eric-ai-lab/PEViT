@@ -1,0 +1,68 @@
+# GPUS: (0,)
+OUTPUT_DIR: '../../OUTPUT/VITB32_CLIP/'
+
+INPUT:
+  MEAN: [0.48145466, 0.4578275, 0.40821073]
+  STD: [0.26862954, 0.26130258, 0.27577711]
+
+MODEL:
+  NAME: 'filip_vitb32'
+  NUM_PARAMS_IN_M: 151.2
+  AUTHOR: 'FILIP'
+  PRETRAINED_DATA: 'DeCLIP-88M'
+  CREATION_TIME: '2021-01-05'
+# Following configuration is needed for runing linear probe with Pytorch based linear model.
+  SPEC:
+    EMBED_DIM: 768
+    DENSE_EVAL: true
+    VISION:
+      MODEL: vit
+      PATCH_SIZE: 32
+      WIDTH: 384
+      LAYERS: 12
+    TEXT:
+      TOKENIZER: clip
+      STYLE: clip
+      CONTEXT_LENGTH: 77
+      VOCAB_SIZE: 49408
+      WIDTH: 512
+      HEADS: 8
+      LAYERS: 12
+      SKIP_TOKENIZE: true
+    DECLIP:
+      image_encode:
+        embed_dim: 768
+      text_encode:
+        bpe_path: 'bpe_simple_vocab_16e6.txt.gz'
+        text_encode_type: Transformer #Transformer,Bert,GPT2,Bert_gvx
+        text_model_utils:
+          random: False
+          freeze: False
+        embed_dim: 768
+      clip:
+        mask_rate: 0.5
+        patch_number: 14
+        use_allgather: False
+        text_mask_type: MLM
+        return_nn_bank: False
+        return_dense: True
+        feature_dim: 768
+        select_topk: True
+
+TEST:
+  BATCH_SIZE_PER_GPU: 128
+  MODEL_FILE: 'https://haotliudb.blob.core.windows.net/checkpoints/icinw/FILIP_YFCC15M_vitb32.pth.tar'
+
+TRAIN:
+  BATCH_SIZE_PER_GPU: 64
+  BEGIN_EPOCH: 0
+  END_EPOCH: 10
+  EXTRA_FINAL_TRAIN_EPOCH: 40
+  OPTIMIZER: sgd
+  WD: 0.
+  MOMENTUM: 0.9
+  NESTEROV: false
+  SHUFFLE: true
+  LR_SCHEDULER:
+    METHOD: 'WarmupCosine'
+    WARMUP_EPOCH: 5

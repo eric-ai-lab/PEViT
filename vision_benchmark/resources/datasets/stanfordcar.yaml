@@ -1,0 +1,8 @@
+# GPUS: (0,)
+
+DATASET:
+  DATASET: 'stanford-cars'
+  ROOT: '../DATASET/stanfordcars/'
+  NUM_CLASSES: 196
+TEST:
+  METRIC: 'accuracy'

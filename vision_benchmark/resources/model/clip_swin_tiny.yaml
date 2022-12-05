@@ -1,0 +1,79 @@
+INPUT:
+  MEAN:
+  - 0.485
+  - 0.456
+  - 0.406
+  STD:
+  - 0.229
+  - 0.224
+  - 0.225
+MODEL:
+  NAME: clip_swin
+  NUM_PARAMS_IN_M: 11.0
+  AUTHOR: 'MSFT'
+  PRETRAINED_DATA: 'ImageNet22K_YFCC15M'
+  CREATION_TIME: '2021-10-27'
+  # Following configuration is needed for CLIP model.
+  PRETRAINED: ''
+  PRETRAINED_LAYERS: ['*']
+  SPEC:
+    EMBED_DIM: 512
+    GATHER_TENSORS: True
+    TEXT:
+      TOKENIZER: clip
+      CONTEXT_LENGTH: 77
+      WIDTH: 512
+      HEADS: 8
+      LAYERS: 12
+    VISION:
+      PATCH_SIZE: 4
+      IN_CHANS: 3
+      EMBED_DIM: 96
+      DEPTHS: [2, 2, 6, 2]
+      NUM_HEADS: [3, 6, 12, 24]
+      WINDOW_SIZE: 7
+      MLP_RATIO: 4.
+      QKV_BIAS: True
+      APE: False
+      PATCH_NORM: True
+      DROP_RATE: 0.0
+      DROP_PATH_RATE: 0.0
+
+KNOWLEDGE:
+  WORDNET:
+    USE_HIERARCHY: False # False
+    USE_DEFINITION: False # True
+
+# DATASET:
+#   DATASET: 'imagenet'
+#   ROOT: ../../data/zeroshot/classification/imagenet 
+OUTPUT_DIR: /home/chunyl/azure_mount/chunyleu_output/cvinwild/ic_benchmark/debug/swin_tiny/unicl_imagenet21k 
+# ../../output/hcl_exp/hcl_yfcc15m_half_imagenet22k_half/wordnet_h_true_d_false
+TEST:
+  MODEL_FILE: '/home/chunyl/azure_mount/chunyleu_output/ckpts/benchmark/swin_tiny/unicl_imagenet21k/model_state_dict.pt' 
+  BATCH_SIZE_PER_GPU: 128
+
+TRAIN:
+  BATCH_SIZE_PER_GPU: 64
+  BEGIN_EPOCH: 0
+  END_EPOCH: 10
+  EXTRA_FINAL_TRAIN_EPOCH: 40
+  OPTIMIZER: sgd
+  WD: 0.
+  MOMENTUM: 0.9
+  NESTEROV: false
+  SHUFFLE: true
+  LR_SCHEDULER:
+    METHOD: 'WarmupCosine'
+    WARMUP_EPOCH: 5
+
+# hcl_imagenet_21k_wiki
+# hcl_imagenet21k
+  # hcl_yfcc15m_half_imagenet21k_half_multitask
+  # '/home/msrdl/azure_mounts/exp_output/ckpts/hcl/hcl_swin_tiny/hcl_yfcc15m_half_imagenet22k_half/model_state_dict.pt'
+
+# '/home/msrdl/azure_mounts/exp_output/ckpts/hcl/hcl_swin_tiny/hcl_yfcc15m_imagenet22k_multitask/model_state_dict.pt'
+# '/home/msrdl/azure_mounts/exp_output/ckpts/hcl/hcl_swin_tiny/hcl_yfcc15m_imagenet22k/model_state_dict.pt'
+
+# hcl_imagenet22k  hcl_yfcc15m  hcl_yfcc15m_half_imagenet21k_half  hcl_yfcc15m_half_imagenet22k_half  hcl_yfcc15m_imagenet21k  hcl_yfcc15m_imagenet22k  hcl_yfcc15m_imagenet22k_multitask
+# hcl_imagenet1k

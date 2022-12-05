@@ -1,0 +1,6 @@
+DATASET:
+  DATASET: 'hateful-memes'
+  ROOT: '../DATASET/hateful_memes/'
+  NUM_CLASSES: 2
+TEST:
+  METRIC: 'roc_auc'

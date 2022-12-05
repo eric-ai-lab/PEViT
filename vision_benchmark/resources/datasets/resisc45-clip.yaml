@@ -1,0 +1,7 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'resisc45_clip'
+  ROOT: '../DATASET/resisc45_clip/'
+  NUM_CLASSES: 45
+TEST:
+  METRIC: 'accuracy'

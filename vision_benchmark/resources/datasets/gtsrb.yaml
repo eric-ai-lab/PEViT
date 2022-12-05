@@ -1,0 +1,7 @@
+# GPUS: (0,)
+DATASET:
+  DATASET: 'gtsrb'
+  ROOT: '../DATASET/gtsrb/'
+  NUM_CLASSES: 43
+TEST:
+  METRIC: 'accuracy'

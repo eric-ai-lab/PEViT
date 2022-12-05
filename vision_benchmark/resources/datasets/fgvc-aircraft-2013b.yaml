@@ -1,0 +1,9 @@
+# GPUS: (0,)
+DATA_DIR: ''
+
+DATASET:
+  DATASET: 'fgvc-aircraft-2013b-variants102'
+  ROOT: '../DATASET/fgvc-aircraft-2013b-variants102/'
+  NUM_CLASSES: 100
+TEST:
+  METRIC: 'mean-per-class'
