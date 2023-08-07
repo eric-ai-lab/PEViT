@@ -577,7 +577,7 @@ class MultiheadAttention(nn.Module):
         elif matrix == 'v':
             if self.factorized_phm_rule:
                 phm_rule2 = torch.bmm(self.phm_rule2_left, self.phm_rule2_right)
-            H = kronecker_product_einsum_batched(phm_rule2, Wq).sum(0)
+            H = kronecker_product_einsum_batched(phm_rule2, Wv).sum(0)
         
         H = self.kdropout(H)
 
